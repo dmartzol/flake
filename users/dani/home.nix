@@ -1,6 +1,19 @@
 { config, lib, pkgs, ... }: {
     home.packages = [
         pkgs.bat
+        pkgs.exa
+        pkgs.fzf
+        pkgs.wget
+        pkgs.gron
+        pkgs.duf
+        pkgs.ripgrep
+        pkgs.gitleaks
+        pkgs.jq
+        pkgs.tldr
+        pkgs.postgresql
+        pkgs.hugo
+        pkgs.lazygit
+        pkgs.pfetch
     ];
 
     xdg.enable = true;
@@ -34,13 +47,13 @@
         package = pkgs.neovim-nightly;
     };
 
-#programs.fish = {
-    #enable = true;
-    #shellAliases = {
-        #pbcopy = "xclip";
-        #pbpaste = "xclip -o";
-    #};
-#};
+    programs.fish = {
+        enable = true;
+        shellAliases = {
+            pbcopy = "xclip";
+            pbpaste = "xclip -o";
+        };
+    };
 
 
   # Make cursor not tiny on HiDPI screens
