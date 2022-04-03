@@ -27,6 +27,19 @@ programs.git = {
     };
 };
 
+programs.fish = {
+    enable = true;
+    shellAliases = {
+        pbcopy = "xclip";
+        pbpaste = "xclip -o";
+    };
+};
+
+programs.neovim = {
+    enable = true;
+    package = pkgs.neovim-nightly;
+};
+
   # Make cursor not tiny on HiDPI screens
   xsession.pointerCursor = {
     name = "Vanilla-DMZ";
