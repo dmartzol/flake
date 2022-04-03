@@ -45,7 +45,7 @@
     dpi = 220;
 
     desktopManager = {
-      xterm.enable = false;
+      xterm.enable = true;
       wallpaper.mode = "scale";
     };
 
