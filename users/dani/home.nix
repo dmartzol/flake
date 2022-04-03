@@ -27,13 +27,13 @@ programs.git = {
     };
 };
 
-programs.fish = {
-    enable = true;
-    shellAliases = {
-        pbcopy = "xclip";
-        pbpaste = "xclip -o";
-    };
-};
+#programs.fish = {
+    #enable = true;
+    #shellAliases = {
+        #pbcopy = "xclip";
+        #pbpaste = "xclip -o";
+    #};
+#};
 
 programs.neovim = {
     enable = true;
