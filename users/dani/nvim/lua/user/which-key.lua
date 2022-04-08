@@ -1,0 +1,41 @@
+local status_ok, wk = pcall(require, 'which-key')
+if not status_ok then
+    return
+end
+
+wk.register({
+    ["<leader>8"] = { "<cmd>noh<CR>", "clear selection" },
+    ["<leader>`"] = { "ysiw`", "surround w/ backticks" },
+    ["<leader>f"] = { name = "+find" },
+    ["<leader>fb"] = { "<cmd>lua require('telescope.builtin').buffers()<cr>", "buffers" },
+    ["<leader>ff"] = { "<cmd>Telescope find_files hidden=true<cr>", "files" },
+    ["<leader>fr"] = { "<cmd>Telescope oldfiles<cr>", "recent files" },
+    ["<leader>fs"] = { ":Telescope find_files cwd=~/.dotfiles hidden=true<cr>", "setting files" },
+    ["<leader>ft"] = { "<cmd>lua require('telescope.builtin').git_branches()<cr>", "git branches" },
+    ["<leader>s"] = { name = "+strings" },
+    ["<leader>ss"] = { ":SplitjoinSplit<CR>", "split lines" },
+    ["<leader>sj"] = { ":SplitjoinJoin<CR>", "join lines" },
+    ["<leader>o"] = { name = "+open" },
+    ["<leader>of"] = { "<cmd>enew<cr>", "new file"},
+    ["<leader>t"] = { name = "+telescope" },
+    ["<leader>tg"] = { "<cmd>lua require('telescope.builtin').live_grep()<cr>", "live grep" },
+    ["<leader>tf"] = { "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>", "fuzzy buffer" },
+    ["<leader>tk"] = { "<cmd>Telescope keymaps<cr>", "keymaps" },
+    ["<leader>tT"] = { "<cmd>lua require('telescope').extensions.file_browser.file_browser()<cr>", "file browser" },
+    ["<leader>ty"] = { "<cmd>lua require('telescope.builtin').lsp_dynamic_workspace_symbols()<cr>", "dynamic workspace symbols" },
+    ["<leader>tx"] = { "<cmd>lua require('telescope.builtin').symbols()<cr>", "symbols" },
+    ["<leader>tz"] = { "<cmd>lua require('telescope.builtin').lsp_document_symbols()<cr>", "document symbols" },
+    ["<leader>th"] = { "<cmd>lua require('telescope.builtin').git_bcommits()<cr>", "file history" },
+    ["<leader>tb"] = { "<cmd>lua require('telescope.builtin').git_branches()<cr>", "git branches" },
+    ["<leader>tp"] = { "<cmd>lua require('telescope.builtin').spell_suggest()<cr>", "spelling suggestions" },
+    ["<leader>tr"] = { "<cmd>lua require('telescope.builtin').lsp_references()<cr>", "find references" },
+    ["<leader>td"] = { "<cmd>lua require('telescope.builtin').diagnostics()<cr>", "diagnostics" },
+    ["<leader>tR"] = { "<cmd>lua require('telescope.builtin').registers()<cr>", "registers" },
+    ["<leader>ts"] = { "<cmd>lua require('telescope.builtin').git_status()<cr>", "git status" },
+    ["<leader>tS"] = { "<cmd>lua require('telescope.builtin').git_stash()<cr>", "git stash" },
+    ["<leader>tm"] = { "<cmd>lua require('telescope.builtin').marks()<cr>", "marks" },
+    ["<leader>tl"] = { "<cmd>lua require('telescope.builtin').loclist()<cr>", "local list" },
+    ["<leader>tH"] = { "<cmd>lua require('telescope.builtin').help_tags()<cr>", "help tags" },
+    ["<leader>r"] = { name = "+reload" },
+    ["<leader>rr"] = { ":Reload<cr>", "reload configuration" },
+})

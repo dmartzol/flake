@@ -1,0 +1,151 @@
+
+" adds syntax highlighting for code snippets in markdown files
+let g:markdown_fenced_languages = ['javascript', 'js=javascript', 'json=javascript']
+filetype plugin indent on " enable filetype detection for plugins and indentation
+let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
+let g:go_fmt_command = "goimports"
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_build_constraints = 1
+let g:syntastic_go_checkers = ['golint', 'govet']
+let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
+let g:go_snippet_engine = 'neosnippet'
+let g:go_rename_command = 'gopls'
+let g:go_list_type = "quickfix" " error lists are of type quickfix
+let g:go_auto_type_info = 1
+let g:go_auto_sameids = 0
+
+autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4 
+let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck', 'deadcode']
+let g:go_metalinter_autosave = 0
+
+" I have to look into:
+" set completeopt=menuone,noinsert,noselect
+" set splitright
+" set splitbelow
+" set shiftwidth
+" set diffopt+=vertical
+" set cmdheight=1
+" set shortmess+=c
+" set hlsearch
+" set updatetime=750
+" noremap <leader>v :e $MYVIMRC<CR>
+" 'tpope/vim-fugitive'
+
+" status bar config
+let g:lightline = {
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'gitbranch#name'
+      \ },
+      \ 'colorscheme': 'one',
+      \ }
+
+" Define prefix dictionary
+let g:lmap =  {}
+call leaderGuide#register_prefix_descriptions("<Space>", "g:lmap")
+nnoremap <silent> <leader> :<c-u>LeaderGuide '<Space>'<CR>
+vnoremap <silent> <leader> :<c-u>LeaderGuideVisual '<Space>'<CR>
+"nnoremap <C-b> :NERDTreeToggle<CR>
+
+" First level dictionaries:
+let g:lmap.a = ['cclose', 'close quickfix'] "nnoremap <leader>a :cclose<CR>
+let g:lmap.c = ['call feedkeys("\<Plug>NERDCommenterToggle")', 'toggle comment']
+let g:lmap.f = { 'name' : 'Find Menu' }
+let g:lmap.g = { 'name' : 'Git' }
+let g:lmap.l = { 'name' : 'Language Layer' }
+let g:lmap.m = ['cprevious', 'previous error'] "nnoremap <leader>m :cprevious<CR>
+let g:lmap.n = ['cnext', 'next error'] "nnoremap <leader>n :cnext<CR>
+let g:lmap.o = { 'name' : 'Open Stuff' }
+let g:lmap.r = { 'name' : 'Replace Menu' }
+let g:lmap.s = { 'name' : 'Split/Jump/Join' }
+let g:lmap.t = { 'name' : 'Telescope Menu' }
+" Provide commands and descriptions for existing mappings
+"
+" Second level dictionaries:
+" edit vim configuration
+let g:lmap.f.d = ['e $MYVIMRC', 'Open vimrc']
+" reload vimrc
+let g:lmap.f.s = ['so $MYVIMRC', 'Source vim config']
+let g:lmap.o.o = ['copen', 'Open quickfix']
+let g:lmap.o.l = ['lopen', 'Open locationlist']
+let g:lmap.f.f = ['Telescope find_files', 'Find files']
+let g:lmap.f.g = ['Telescope live_grep', 'Live grep']
+let g:lmap.f.b = ['Telescope buffers', 'Buffers']
+let g:lmap.f.h = ['Telescope help_tags', 'Help tags']
+" Move easily between errors
+" build and run golang programs
+autocmd FileType go nmap <leader>lb <Plug>(go-build)
+autocmd FileType go nmap <Leader>lh <Plug>(go-info)
+autocmd FileType go nmap <leader>lt <Plug>(go-test)
+autocmd FileType go nmap <Leader>lc <Plug>(go-coverage-toggle)
+autocmd FileType go nmap <Leader>la :GoAddTags
+autocmd FileType go nmap <Leader>ls :GoMetaLinter
+let g:lmap.l.a = ['GoAddTags', 'go add tags']
+let g:lmap.l.b = ['GoBuild', 'go build']
+let g:lmap.l.c = ['GoCoverage', 'go coverage']
+let g:lmap.l.C = ['GoDefStackClear', 'clear navigation stack']
+let g:lmap.l.d = ['GoDef', 'go to definition']
+let g:lmap.l.D = ['GoDefType', 'go to type definition']
+let g:lmap.l.e = ['GoIfErr', 'generate error handling']
+let g:lmap.l.f = ['GoDefPop', 'go Back']
+let g:lmap.l.F = ['GoReferrers', 'go to references']
+let g:lmap.l.h = ['GoInfo', 'go info']
+let g:lmap.l.l = ['GoMetaLinter', 'go meta linter']
+let g:lmap.l.r = ['lua vim.lsp.buf.rename()', 'rename symbol']
+let g:lmap.l.s = ['GoDefStack', 'show navigation stack']
+let g:lmap.l.t = ['GoTest', 'go test']
+
+let g:lmap.s.u = ['norm viw~', 'toggle upper/lower case']
+nnoremap <silent> <leader>su viw~
+map :w :update<CR>
+
+"autocmd FileType go inoremap <buffer> . .<C-x><C-o>
+"autocmd FileType go nmap <Leader>ds <Plug>(go-def-split)
+"autocmd FileType go nmap <Leader>dv <Plug>(go-def-vertical)
+"autocmd FileType go nmap <Leader>dt <Plug>(go-def-tab)
+"autocmd FileType go nmap gd <Plug>(go-def-tab)
+"autocmd FileType go nmap gv <Plug>(go-def-vertical)
+"autocmd FileType go nmap gt <Plug>(go-def-tab)
+
+" better find and replace
+nnoremap cn *``cgn
+let g:lmap.r.p = ['*``cgn', 'Simple Replace']
+
+"nmap <silent> <leader>fs :so $MYVIMRC<CR>
+"nmap <silent> <leader>fd :e $MYVIMRC<CR>
+"nmap <silent> <leader>oo  :copen<CR>
+"nmap <silent> <leader>ol  :lopen<CR>
+"nnoremap <silent> <leader>ff <cmd>Telescope find_files<cr>
+"nnoremap <silent> <leader>fg <cmd>Telescope live_grep<cr>
+"nnoremap <silent> <leader>fb <cmd>Telescope buffers<cr>
+"nnoremap <silent> <leader>fh <cmd>Telescope help_tags<cr>
+
+" Using Lua functions
+"nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
+"nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
+"nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
+"nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
+
+" Easier Moving between splits
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+if has('nvim')
+    " Easy moving between the buffers
+    tnoremap <A-h> <C-\><C-n><C-w>h
+    tnoremap <A-j> <C-\><C-n><C-w>j
+    tnoremap <A-k> <C-\><C-n><C-w>k
+    tnoremap <A-l> <C-\><C-n><C-w>l
+endif
+

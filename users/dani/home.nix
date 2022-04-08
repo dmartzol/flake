@@ -20,6 +20,21 @@
     xdg.enable = true;
     home.file.".inputrc".source = ./inputrc;
     xdg.configFile."i3/config".text = builtins.readFile ./i3;
+    xdg.configFile."nvim/init.lua".source = ./nvim/init.lua;
+    xdg.configFile."nvim/lua/user/plugins.lua".source = ./nvim/lua/user/plugins.lua;
+    xdg.configFile."nvim/lua/user/options.lua".source = ./nvim/lua/user/options.lua;
+    xdg.configFile."nvim/lua/user/color.lua".source = ./nvim/lua/user/color.lua;
+    xdg.configFile."nvim/lua/user/completion.lua".source = ./nvim/lua/user/completion.lua;
+    xdg.configFile."nvim/lua/user/hop.lua".source = ./nvim/lua/user/hop.lua;
+    xdg.configFile."nvim/lua/user/keymaps.lua".source = ./nvim/lua/user/keymaps.lua;
+    xdg.configFile."nvim/lua/user/lualine.lua".source = ./nvim/lua/user/lualine.lua;
+    xdg.configFile."nvim/lua/user/telescope.lua".source = ./nvim/lua/user/telescope.lua;
+    xdg.configFile."nvim/lua/user/luasnip.lua".source = ./nvim/lua/user/luasnip.lua;
+    xdg.configFile."nvim/lua/user/gitsigns.lua".source = ./nvim/lua/user/gitsigns.lua;
+    xdg.configFile."nvim/lua/user/which-key.lua".source = ./nvim/lua/user/which-key.lua;
+    xdg.configFile."nvim/lua/user/cyclist.lua".source = ./nvim/lua/user/cyclist.lua;
+    xdg.configFile."nvim/lua/user/lsp/init.lua".source = ./nvim/lua/user/lsp/init.lua;
+    xdg.configFile."nvim/lua/user/lsp/lsp.lua".source = ./nvim/lua/user/lsp/lsp.lua;
 
     home.sessionVariables = {
         LANG = "en_US.UTF-8";
