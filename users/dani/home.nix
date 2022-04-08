@@ -71,10 +71,27 @@
 
     programs.fish = {
         enable = true;
+        interactiveShellInit = lib.strings.concatStrings (lib.strings.intersperse "\n" [
+            "source ${sources.theme-bobthefish}/fish_prompt.fish"
+            "source ${sources.theme-bobthefish}/fish_right_prompt.fish"
+            "source ${sources.theme-bobthefish}/fish_title.fish"
+            (builtins.readFile ./config.fish)
+            "set -g SHELL ${pkgs.fish}/bin/fish"
+        ]);
+
         shellAliases = {
             pbcopy = "xclip";
             pbpaste = "xclip -o";
         };
+
+        plugins = map (n: {
+            name = n;
+            src  = sources.${n};
+        }) [
+            "fish-fzf"
+            "fish-foreign-env"
+            "theme-bobthefish"
+        ];
     };
 
   # Make cursor not tiny on HiDPI screens
