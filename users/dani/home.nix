@@ -16,7 +16,9 @@
         pkgs.pfetch
     ];
 
+# config files
     xdg.enable = true;
+    home.file.".inputrc".source = ./inputrc;
     xdg.configFile."i3/config".text = builtins.readFile ./i3;
 
     home.sessionVariables = {
@@ -47,12 +49,10 @@
         package = pkgs.neovim-nightly;
     };
 
-
     programs.kitty = {
         enable = true;
         extraConfig = builtins.readFile ./kitty;
     };
-
 
     programs.fish = {
         enable = true;
@@ -61,7 +61,6 @@
             pbpaste = "xclip -o";
         };
     };
-
 
   # Make cursor not tiny on HiDPI screens
   xsession.pointerCursor = {
