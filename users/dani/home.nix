@@ -47,6 +47,13 @@
         package = pkgs.neovim-nightly;
     };
 
+
+    programs.kitty = {
+        enable = true;
+        extraConfig = builtins.readFile ./kitty;
+    };
+
+
     programs.fish = {
         enable = true;
         shellAliases = {
