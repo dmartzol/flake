@@ -174,7 +174,10 @@ abbr --add --global 'tree' 'exa -aT'
 abbr --add --global 'gb' 'time go build -o /dev/null ./... && \
                      time golangci-lint run --new --timeout 2m ./... && \
                      golangci-lint run ./... --print-issued-lines=false --max-same-issues=0 --max-issues-per-linter=0 | wc -l'
-
+abbr --add --global 'xrandr-6k' 'xrandr --newmode "6016x3384_60.00"  1768.50  6016 6544 7216 8416  3384 3387 3392 3503 -hsync +vsync &&\
+      xrandr --addmode Virtual-1 6016x3384_60.00 &&\
+      xrandr -s 6016x3384_60.00'
+abbr --add --global 'xrandr-mbp' 'xrandr -s 2880x1800'
 
 function gb
   time go build -o /dev/null ./...
