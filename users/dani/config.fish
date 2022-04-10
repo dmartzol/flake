@@ -136,8 +136,8 @@ end
 if command -v bat > /dev/null
     abbr --add --global cat bat
 end
-if command -v pfetch > /dev/null
-    pfetch
+if command -v neofetch > /dev/null
+    neofetch 
 end
 
 ### Abbreviations ###
