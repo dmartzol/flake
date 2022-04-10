@@ -106,6 +106,7 @@
         ];
     };
 
+  xresources.extraConfig = builtins.readFile ./Xresources;
   # Make cursor not tiny on HiDPI screens
   xsession.pointerCursor = {
     name = "Vanilla-DMZ";
