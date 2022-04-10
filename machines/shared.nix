@@ -45,7 +45,7 @@
     dpi = 220;
 
     desktopManager = {
-      xterm.enable = true;
+      xterm.enable = false;
       wallpaper.mode = "scale";
     };
 
@@ -77,6 +77,8 @@
 
     fonts = [
       pkgs.fira-code
+      pkgs.fira-code-symbols
+      pkgs.jetbrains-mono
     ];
   };
 
