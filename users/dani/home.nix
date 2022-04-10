@@ -13,7 +13,7 @@
         pkgs.postgresql
         pkgs.hugo
         pkgs.lazygit
-        pkgs.pfetch
+        pkgs.neofetch
     ];
 
 # config files
